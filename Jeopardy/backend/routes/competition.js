@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const competitionController = require("../controllers/competitionController");
 
-// Example placeholder route
-router.get("/", (req, res) => {
-  res.send("Competition route is working!");
-});
+router.post("/", competitionController.createCompetition);
+router.get("/:id", competitionController.getCompetition);
 
 module.exports = router;

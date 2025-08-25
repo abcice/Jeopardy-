@@ -11,12 +11,18 @@ const competitionRoutes = require("./routes/competition");
 const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, { cors: { origin: "*" } });
+const corsOptions = {
+  origin: "http://localhost:5173", // frontend URL
+  credentials: true, // if using cookies or auth headers
+};
+
+
 
 // DB Connection
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
